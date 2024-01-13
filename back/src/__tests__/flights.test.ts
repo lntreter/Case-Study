@@ -1,7 +1,9 @@
-import exp from "constants"
-import type * as t from "../index"
+import type * as t from "../index" // t modülü içerisindeki fonksiyonları kullanmak için import ediyoruz
 
-const {getStatus, getFlights, getHeaderType} = jest.requireActual<typeof t>("../index")
+
+// typescript ile yazılan fonksiyonları jest ile test edebilmek için jest.requireActual kullanıyoruz
+// getStatus, getFlights ve getHeaderType fonksiyonlarını jest.requireActual ile import ediyoruz
+const {getStatus, getFlights, getHeaderType} = jest.requireActual<typeof t>("../index") 
 
 interface Flight {
 
@@ -15,12 +17,17 @@ interface Flight {
     ]
 } 
 
+// Get status kontrolü getStatus() fonksiyonu status olarak 200 döndürüyor ise test başarılı
+
 describe("Status OK kontrolü getStatus()", () => {
     it("½s", async () => {
         const result = await getStatus({} as any, {} as any)
         expect(result).toEqual({status: 200})
     })
 })
+
+// Get flights kontrolü getFlights() fonksiyonu status olarak 200 döndürüyor ise ve 
+// body içerisinde data arrayi ve bu array içerisinde id, from, to ve date keyleri var ise test başarılı
 
 describe("Gelen cevap kontrolü getFlights()", () => {
     it ("½s", async () => {
@@ -39,6 +46,9 @@ describe("Gelen cevap kontrolü getFlights()", () => {
         )
     })
 })
+
+// Get header kontrolü getHeaderType() fonksiyonu status olarak 200 döndürüyor ise ve
+// headers içerisinde content-type keyi application/json ise test başarılı
 
 describe("Header kontrolü getHeaderType()", () => {
     it("½s", async () => {
