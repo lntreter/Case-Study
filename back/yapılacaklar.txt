@@ -1,0 +1,48 @@
+
+
+Backend
+
+    “https://flights-api.buraky.workers.dev/” adresinde çalışan bir API’miz var. Bu API için test yazmanı istiyoruz.
+
+    Herhangi bir araç ya da programlama dili kullanılabilirsin.
+
+    Yapılacak testler
+
+    HTTP status code’larını kontrol et
+    -GET istekleri 200 status code dönmeli
+
+    Response içeriğini kontrol et
+    -GET isteklerinden şu yapıda bir cevap gelmeli:
+
+
+        
+    Response: Object[string -> Array[Flight]]
+
+    Flight {
+        Id   integer
+        From string
+        To   string
+        Date string
+    }
+
+    Example:
+
+    {
+    “data”: [
+        {
+        "id": 1,
+        "from": "IST",
+        "to": "LAX",
+        "date": "2022-12-13"
+        },
+        {
+        "id": 2,
+        "from": "JFK",
+        "to": "LHR",
+        "date": "2022-12-14"
+        }
+    ]
+    }
+
+    Header kontrolü
+    GET isteklerinden gelen response’un içinde “Content-Type” header’ı olmalı ve değeri “application/json” olmalı.
